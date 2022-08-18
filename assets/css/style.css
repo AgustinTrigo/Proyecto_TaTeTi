@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.estructura{
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-rows: 200px 427px 425px;
+    grid-template-areas: 
+      ". . ."
+      ". table ."
+      ". . ."; 
+}
+
+
+.tablero{
+    grid-area: table;
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-rows: 140px 140px 140px;
+    gap: 2.5px;
+    grid-template-areas: 
+      "cas cas cas"
+      "cas cas cas"
+      "cas cas cas";
+}
+
+.casilla{
+    grid-area: "cas";
+    border: solid 1px black;
+}
+
+.casilla .fa-xmark{
+    position: relative;
+    top: 50px;
+    left: 57.5px;
+    font-size: 40px;
+    color: red;
+}
+
+.casilla .fa-circle{
+    position: relative;
+    top: 50px;
+    left: 50px;
+    font-size: 40px;
+    color: blue;
+
+}
