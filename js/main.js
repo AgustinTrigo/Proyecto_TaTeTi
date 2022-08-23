@@ -47,6 +47,15 @@ const casillas = [
     },
 ]
 
+const loadTablero = () => { localStorage.setItem("tablero", JSON.stringify(casillas))};
+
+
+const getTablero = () => {
+    return tableroLocal = JSON.parse(localStorage.getItem("tablero"));
+}
+
+loadTablero();
+
 let xmark =  `<i class="fa-solid fa-xmark"></i>`;
 let circle = `<i class="fa-regular fa-circle"></i>`;
 
@@ -55,10 +64,34 @@ casillas.forEach((elemento, index) => {
     tablero.innerHTML += `${elemento.container}`;
 })
 
+let contador = 0;
+const jugadorUno = [];
+const jugadorDos = [];
 
 function marcador(index){
-    console.log(index);
+    let casilla = index + 1;
+    let slot = document.getElementById(`${casilla}`);
+    if((jugadorUno.length < 5) && (jugadorUno.length < 5)){ 
+        if((contador % 2 == 0) && (!jugadorDos.includes(casilla, -1)) && (!jugadorUno.includes(casilla, -1))){
+            console.log((!jugadorDos.includes(casilla, -1)))
+            console.log((!jugadorUno.includes(casilla, -1)))
+            slot.innerHTML = circle;
+            contador++;
+            jugadorUno.push(index + 1);
+            console.log(`Jugador A ${jugadorUno}`);
+        }else if((!jugadorUno.includes(casilla, -1)) && (!jugadorDos.includes(casilla, -1))){
+            console.log((!jugadorDos.includes(casilla, -1)))
+            console.log((!jugadorUno.includes(casilla, -1)))
+            slot.innerHTML = xmark;
+            contador++;
+            jugadorDos.push(index + 1);
+            console.log(`Jugador B ${jugadorDos}`);
+        }
+    }
+    console.log(contador);
 }
+
+
 
 
 
