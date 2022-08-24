@@ -5,12 +5,12 @@ Juego Tres en linea o Tic Tac Toe.
 
 
 ## Deploy ##
-Podés ver el sitio ingresando [aquí](https://agustintrigo.github.io/Proyecto_DW/)
+Podés ver el sitio ingresando [aquí](https://agustintrigo.github.io/Proyecto_TaTeTi/)
 
 ## Construido con ##
 * HTML
 * CSS
-* JS (Vanilla)
+* JS
 
 ## Para seguir trabajando: ##
 * Mejorar la interfaz y el diseño.
