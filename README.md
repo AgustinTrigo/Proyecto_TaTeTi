@@ -15,5 +15,5 @@ Podés ver el sitio ingresando [aquí](https://agustintrigo.github.io/Proyecto_D
 ## Para seguir trabajando: ##
 * Mejorar la interfaz.
 * Refactorizar funcion que valida si alguien gano.
-* Agregar opcion de seleccion del jugador (X o O).
+* Agregar opcion de seleccion del jugador (X - O).
 * Agregar opcion 1 jugador.
