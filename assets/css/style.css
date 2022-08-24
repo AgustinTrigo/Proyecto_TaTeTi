@@ -9,11 +9,17 @@
     grid-template-columns: 1fr 1fr 1fr; 
     grid-template-rows: 200px 427px 425px;
     grid-template-areas: 
-      ". . ."
+      ". estado ."
       ". table ."
       ". . ."; 
 }
 
+.panel{
+    grid-area: estado;
+    align-self: center;
+    color: green;
+    text-align: center;
+}
 
 .tablero{
     grid-area: table;
