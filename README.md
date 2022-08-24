@@ -17,3 +17,4 @@ Podés ver el sitio ingresando [aquí](https://agustintrigo.github.io/Proyecto_D
 * Refactorizar funcion que valida si alguien gano.
 * Agregar opcion de seleccion del jugador (X - O).
 * Agregar opcion 1 jugador.
+* Diseño responsive.
