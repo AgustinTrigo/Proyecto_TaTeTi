@@ -14,7 +14,7 @@ body{
     display: grid;
     grid-template-columns: 1fr; 
     grid-template-rows: 200px 427px 425px;
-    grid-template-areas: 
+    grid-template-areas:
       "estado"
       "table"
       ".";
