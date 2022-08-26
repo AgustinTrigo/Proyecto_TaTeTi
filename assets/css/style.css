@@ -4,14 +4,21 @@
     box-sizing: border-box;
 }
 
+/*
+body{
+    background-image: linear-gradient(90deg, rgb(53, 33, 56), rgb(45, 41, 97) );
+}
+*/
+
 .estructura{
-    display: grid; 
-    grid-template-columns: 1fr 1fr 1fr; 
+    display: grid;
+    grid-template-columns: 1fr; 
     grid-template-rows: 200px 427px 425px;
     grid-template-areas: 
-      ". estado ."
-      ". table ."
-      ". . ."; 
+      "estado"
+      "table"
+      ".";
+    justify-content: center;
 }
 
 .panel{
@@ -24,33 +31,53 @@
 .tablero{
     grid-area: table;
     display: grid; 
-    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-columns: 140px 140px 140px; 
     grid-template-rows: 140px 140px 140px;
     gap: 2.5px;
     grid-template-areas: 
       "cas cas cas"
       "cas cas cas"
       "cas cas cas";
+    justify-content: center;
 }
 
 .casilla{
     grid-area: "cas";
     border: solid 1px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.casilla:hover{
+    cursor: pointer;
 }
 
 .casilla .fa-xmark{
-    position: relative;
-    top: 50px;
-    left: 57.5px;
     font-size: 40px;
     color: red;
 }
 
 .casilla .fa-circle{
-    position: relative;
-    top: 50px;
-    left: 50px;
     font-size: 40px;
     color: blue;
+}
 
+@media (min-width: 900px) {
+    .estructura{
+        grid-template-columns: 200px 1fr 200px; 
+        grid-template-rows: 200px 427px 425px;
+        grid-template-areas: 
+          ". estado ."
+          ". table ."
+          ". . ."; 
+    }
+}
+
+@media (min-width: 1200px) {
+    .tablero{
+        grid-template-columns: 200px 200px 200px; 
+        grid-template-rows: 200px 200px 200px;
+    }
+    
 }
