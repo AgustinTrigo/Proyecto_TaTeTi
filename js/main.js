@@ -24,10 +24,11 @@ casillas.forEach((elemento, index) => {
 let contador = 0;
 const jugadorUno = [];
 const jugadorDos = [];
+let referencia = -10;
 
 // Objetos para validar si se completo la linea.
 
-const validacionesCirculo = {
+const validarCirculo = {
     A1: false,
     A2: false,
     A3: false,
@@ -39,7 +40,7 @@ const validacionesCirculo = {
     C3: false,
 }
 
-const validacionesXmark = {
+const validarEquis = {
     A1: false,
     A2: false,
     A3: false,
@@ -53,6 +54,7 @@ const validacionesXmark = {
 
 // Funcion para marcar el tablero por turnos.
 
+
 function marcador(index){
     let casilla = index + 1;
     let slot = document.getElementById(`${casilla}`);
@@ -61,75 +63,73 @@ function marcador(index){
             slot.innerHTML = circle;
             contador++;
             jugadorUno.push(casilla);
-            validar(jugadorUno, validacionesCirculo);
+            buscar(jugadorUno, validarCirculo, casilla, referencia, circle);
         }else if((!jugadorUno.includes(casilla, -10)) && (!jugadorDos.includes(casilla, -10))){
             slot.innerHTML = xmark;
             contador++;
             jugadorDos.push(casilla);
-            validar(jugadorDos, validacionesXmark);
+            buscar(jugadorDos, validarEquis, casilla, referencia, xmark);
         }
     }
 }
 
 // Funcion para validar ganador
 
-function validar(objeto1, objeto2){
-    if(objeto1.includes(1,-10)){
-        objeto2.A1 = true;
-    }
-    if(objeto1.includes(2,-10)){
-        objeto2.A2 = true;
-    }
-    if(objeto1.includes(3,-10)){
-        objeto2.A3 = true;
-    }
-    if(objeto1.includes(4,-10)){
-        objeto2.B1 = true;
-    }
-    if(objeto1.includes(5,-10)){
-        objeto2.B2 = true;
-    }
-    if(objeto1.includes(6,-10)){
-        objeto2.B3 = true;
-    }
-    if(objeto1.includes(7,-10)){
-        objeto2.C1 = true;
-    }
-    if(objeto1.includes(8,-10)){
-        objeto2.C2 = true;
-    }
-    if(objeto1.includes(9,-10)){
-        objeto2.C3 = true;
-    }
-    if((objeto2.A1 == true) && (objeto2.A2 == true) && (objeto2.A3 == true)){
-        document.getElementById("hud").innerHTML = "<h2>GANASTE</h2>";
-    }
-    if((objeto2.B1 == true) && (objeto2.B2 == true) && (objeto2.B3 == true)){
-        document.getElementById("hud").innerHTML = "<h2>GANASTE</h2>";
-    }
-    if((objeto2.C1 == true) && (objeto2.C2 == true) && (objeto2.C3 == true)){
-        document.getElementById("hud").innerHTML = "<h2>GANASTE</h2>";
-    }
-    if((objeto2.A1 == true) && (objeto2.B1 == true) && (objeto2.C1 == true)){
-        document.getElementById("hud").innerHTML = "<h2>GANASTE</h2>";
-    }
-    if((objeto2.A2 == true) && (objeto2.B2 == true) && (objeto2.C2 == true)){
-        document.getElementById("hud").innerHTML = "<h2>GANASTE</h2>";
-    }
-    if((objeto2.A3 == true) && (objeto2.B3 == true) && (objeto2.C3 == true)){
-        document.getElementById("hud").innerHTML = "<h2>GANASTE</h2>";
-    }
-    if((objeto2.A1 == true) && (objeto2.B2 == true) && (objeto2.C3 == true)){
-        document.getElementById("hud").innerHTML = "<h2>GANASTE</h2>";
-    }
-    if((objeto2.C1 == true) && (objeto2.B2 == true) && (objeto2.A3 == true)){
-        document.getElementById("hud").innerHTML = "<h2>GANASTE</h2>";
+function buscar(objeto1, objeto2, celda, referencia, jugador){
+    if(objeto1.includes(celda, referencia)){
+        switch(celda){
+            case 1:
+                objeto2.A1 = true;
+            break
+            case 2:
+                objeto2.A2 = true;
+            break
+            case 3:
+                objeto2.A3 = true;
+            break
+            case 4:
+                objeto2.B1 = true;
+            break
+            case 5:
+                objeto2.B2 = true;
+            break
+            case 6:
+                objeto2.B3 = true;
+            break
+            case 7:
+                objeto2.C1 = true;
+            break
+            case 8:
+                objeto2.C2 = true;
+            break
+            case 9:
+                objeto2.C3 = true;
+            break
+        }
     }
 
+    if((objeto2.A1) && (objeto2.A2) && (objeto2.A3)){
+        mensaje(jugador);
+    } else if((objeto2.B1) && (objeto2.B2) && (objeto2.B3)){
+        mensaje(jugador);
+    } else if((objeto2.C1) && (objeto2.C2) && (objeto2.C3)){
+        mensaje(jugador);
+    } else if((objeto2.A1) && (objeto2.B1) && (objeto2.C1)){
+        mensaje(jugador);
+    } else if((objeto2.A2) && (objeto2.B2) && (objeto2.C2)){
+        mensaje(jugador);
+    } else if((objeto2.A3) && (objeto2.B3) && (objeto2.C3)){
+        mensaje(jugador);
+    } else if((objeto2.A1) && (objeto2.B2) && (objeto2.C3)){
+        mensaje(jugador);
+    } else if((objeto2.C1) && (objeto2.B2) && (objeto2.A3)){
+        mensaje(jugador);
+    }
 }
 
-
-
+function mensaje(jugador){
+    document.getElementById("hud").innerHTML = `<h2>GANADOR</h2> ${jugador}`;
+}
 
 
 
