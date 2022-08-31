@@ -13,8 +13,37 @@ const casillas = [
 ]
 
 // Iconos
+
+let btnEquis = document.getElementById("btn1");
+let btnCirculo = document.getElementById("btn2");
+
 let xmark =  `<i class="fa-solid fa-xmark"></i>`;
 let circle = `<i class="fa-regular fa-circle"></i>`;
+
+let marcadorJ1;
+let marcadorJ2;
+
+btnEquis.addEventListener("click", elejirMarcador1)
+btnCirculo.addEventListener("click", elejirMarcador2)
+
+function elejirMarcador1(){
+    if(marcadorJ1 === undefined){
+        marcadorJ1 = xmark;
+        marcadorJ2 = circle;
+        console.log(marcadorJ1)
+        console.log(marcadorJ2)
+    } 
+}
+
+function elejirMarcador2(){
+    if(marcadorJ1 === undefined){
+        marcadorJ1 = circle;
+        marcadorJ2 = xmark;
+        console.log(marcadorJ1)
+        console.log(marcadorJ2)
+    }
+}
+
 
 casillas.forEach((elemento, index) => { 
     elemento.container = `<div id="${elemento.id}" class="casilla" onClick="marcador(${index})"></div>`
@@ -58,18 +87,22 @@ const validarEquis = {
 function marcador(index){
     let casilla = index + 1;
     let slot = document.getElementById(`${casilla}`);
-    if((jugadorUno.length < 5) && (jugadorUno.length < 5)){ 
-        if((contador % 2 == 0) && (!jugadorDos.includes(casilla, -10)) && (!jugadorUno.includes(casilla, -10))){
-            slot.innerHTML = circle;
-            contador++;
-            jugadorUno.push(casilla);
-            buscar(jugadorUno, validarCirculo, casilla, referencia, circle);
-        }else if((!jugadorUno.includes(casilla, -10)) && (!jugadorDos.includes(casilla, -10))){
-            slot.innerHTML = xmark;
-            contador++;
-            jugadorDos.push(casilla);
-            buscar(jugadorDos, validarEquis, casilla, referencia, xmark);
+    if(marcadorJ1 !== undefined){
+        if((jugadorUno.length < 5) && (jugadorUno.length < 5)){ 
+            if((contador % 2 == 0) && (!jugadorDos.includes(casilla, -10)) && (!jugadorUno.includes(casilla, -10))){
+                slot.innerHTML = marcadorJ1;
+                contador++;
+                jugadorUno.push(casilla);
+                buscar(jugadorUno, validarCirculo, casilla, referencia, marcadorJ1);
+            }else if((!jugadorUno.includes(casilla, -10)) && (!jugadorDos.includes(casilla, -10))){
+                slot.innerHTML = marcadorJ2;
+                contador++;
+                jugadorDos.push(casilla);
+                buscar(jugadorDos, validarEquis, casilla, referencia, marcadorJ2);
+            }
         }
+    }else{
+        console.log("elija un marcador")
     }
 }
 
@@ -130,7 +163,4 @@ function buscar(objeto1, objeto2, celda, referencia, jugador){
 function mensaje(jugador){
     document.getElementById("hud").innerHTML = `<h2>GANADOR</h2> ${jugador}`;
 }
-
-
-
 
