@@ -1,8 +1,6 @@
-# Proyecto experimental: TeTeTi
+# Proyecto de practica JS Vanilla: TeTeTi
 ## Descripcion
-
-Juego Tres en linea o Tic Tac Toe.
-
+Realizado con CSS puro y JS vanilla, juego Tres en linea o Tic Tac Toe.
 
 ## Deploy ##
 Podés ver el sitio ingresando [aquí](https://agustintrigo.github.io/Proyecto_TaTeTi/)
@@ -12,6 +10,3 @@ Podés ver el sitio ingresando [aquí](https://agustintrigo.github.io/Proyecto_T
 * CSS
 * JS
 
-## Para seguir trabajando: ##
-* Mejorar la interfaz y el diseño.
-* Agregar opcion 1 jugador.
